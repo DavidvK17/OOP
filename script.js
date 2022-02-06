@@ -301,10 +301,13 @@ class Account {
 
   deposit(val) {
     this._movements.push(val);
+    // Making a mtheod chainable
+    return this;
   }
 
   widthdraw(val) {
     this.deposit(-val);
+    return this;
   }
 }
 
@@ -314,3 +317,9 @@ console.log(acc1);
 acc1.deposit(250);
 acc1.widthdraw(140);
 console.log(acc1.getMovements());
+
+// Chaining
+acc1
+  .deposit(300)
+  .deposit(500)
+  .widthdraw(35);
