@@ -287,8 +287,24 @@ class Account {
     this.owner = owner;
     this.currency = currency;
     this.pin = pin;
+    this.movements = [];
+    this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  // Public Interface to our Objects (API)
+  deposit(val) {
+    this.movements.push(val);
+  }
+
+  widthdraw(val) {
+    this.deposit(-val);
   }
 }
 
 const acc1 = new Account('David', 'EUR', 1111);
 console.log(acc1);
+
+acc1.deposit(250);
+acc1.widthdraw(140);
