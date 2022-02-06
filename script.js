@@ -287,15 +287,20 @@ class Account {
     this.owner = owner;
     this.currency = currency;
     this.pin = pin;
-    this.movements = [];
+    // Fake encapsulation
+    this._movements = [];
     this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
   // Public Interface to our Objects (API)
+  getMovements() {
+    return this._movements;
+  }
+
   deposit(val) {
-    this.movements.push(val);
+    this._movements.push(val);
   }
 
   widthdraw(val) {
@@ -308,3 +313,4 @@ console.log(acc1);
 
 acc1.deposit(250);
 acc1.widthdraw(140);
+console.log(acc1.getMovements());
